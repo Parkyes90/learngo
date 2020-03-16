@@ -2,17 +2,18 @@ package main
 
 import (
 	"fmt"
-	"github.com/parkyes90/learngo/accounts"
+	"github.com/parkyes90/learngo/custom_dict"
 )
 
 func main() {
-	account := accounts.NewAccount("parkyes90")
-	account.Deposit(500)
-	err := account.Withdraw(6000)
+	dictionary := custom_dict.Dictionary{"first": "First word"}
+	def, err := dictionary.Search("first")
+
+	err2 := dictionary.Add("test", "test2")
 	if err != nil {
 		fmt.Println(err)
+	} else {
+		fmt.Println(def)
 	}
-	account.ChangeOwner("parkyes")
-
-	fmt.Println(account.Balance(), account.Owner())
+	fmt.Println(dictionary, err2)
 }
